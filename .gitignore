@@ -1,0 +1,5 @@
+*.zip
+.ipynb_checkpoints/
+p0/titanic_survival_exploration/titanic_visualizations.py
+p0/titanic_survival_exploration/titanic_visualizations.pyc
+p0/titanic_survival_exploration/titanic_data.csv
