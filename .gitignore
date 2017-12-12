@@ -3,7 +3,7 @@
 p0/titanic_survival_exploration/titanic_visualizations.py
 p0/titanic_survival_exploration/titanic_visualizations.pyc
 p0/titanic_survival_exploration/titanic_data.csv
-p1/boston_housing/*.csv
-p1/boston_housing/*.py
-p1/boston_housing/*.pyc
-p1/boston_housing/*.md
+p1/boston_house/*.csv
+p1/boston_house/*.py
+p1/boston_house/*.pyc
+p1/boston_house/*.md
