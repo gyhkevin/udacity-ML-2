@@ -11803,7 +11803,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入此项目所需要的库</span>
@@ -11827,7 +11827,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入波士顿房屋的数据集</span>
@@ -11894,25 +11894,25 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#TODO 1</span>
 
 <span class="c1">#目标：计算价值的最小值</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的最大值</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的平均值</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的中值</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的标准差</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1">#目标：输出计算的结果</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11943,7 +11943,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -12028,7 +12028,11 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-2---&#22238;&#31572;:">&#38382;&#39064; 2 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-2---&#22238;&#31572;:">&#194;&#182;</a></h3><p>从总体中抽出一部分使用训练用的数据库，可以通过算法训练模型，找出符合这些数据的模型，而另一部分测试用的数据可以用来对模型进行检验，看这种算法的准确性有多高。如果用模型已经见过的数据，那么就很容易产生过拟合。如果数据太少或者没有，那这种训练出来的模型泛化性能会很差。</p>
+<h3 id="&#38382;&#39064;-2---&#22238;&#31572;:">&#38382;&#39064; 2 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-2---&#22238;&#31572;:">&#194;&#182;</a></h3><ol>
+<li>使用各自的训练和测试数据，使得你能基于独立数据集评估分类器或回归的性能；</li>
+<li>测试数据作为过度拟合的检查因素，检测算法的好坏；</li>
+<li>如果数据太少或者没有，那这种训练出来的模型泛化性能会很差。</li>
+</ol>
 
 </div>
 </div>
@@ -13293,7 +13297,7 @@ uJNkZmZmZmZW4E6SmZmZmZlZgTtJZmZmZmZmBf8Le5xwa9zfpmMAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-4---&#22238;&#31572;:">&#38382;&#39064; 4 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-4---&#22238;&#31572;:">&#194;&#182;</a></h3><p>图二，max_depth=3。随着训练点数量的增加，训练集曲线和验证集曲线的评分慢慢收敛到0.8，如果有更多的训练数据，一般不会有效提升模型的表现。</p>
+<h3 id="&#38382;&#39064;-4---&#22238;&#31572;:">&#38382;&#39064; 4 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-4---&#22238;&#31572;:">&#194;&#182;</a></h3><p>图二，max_depth=3。随着训练点数量的增加，训练集曲线的评分继续缓慢下降，验证集曲线的评分缓慢上升，收敛到0.8，变化速率缓慢。如果有更多的训练数据，一般不会有效提升模型的表现。</p>
 
 </div>
 </div>
@@ -13816,8 +13820,12 @@ uahgxyHSHNTjExGRkKIen4iIhBT1+EREJKQo8YmISEhR4hMRkZCixCciIiFFiU9EREKKEp+IiISU
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#194;&#182;</a></h3><p>通过网格搜索法做交叉验证，确定参数；通过调节每一个参数来跟踪评分结果来优化模型。
-参考地址：<a href="http://blog.csdn.net/jasonding1354/article/details/50562522">CSDN博客</a></p>
+<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#194;&#182;</a></h3><ul>
+<li>网格搜索法是将整体数据等分成多个子集数据，然后分别做验证算法；</li>
+<li>通过网格搜索法做交叉验证，确定参数，对所有参数组合进行计算，最后得出一个最优的结果；</li>
+<li>评分使用决定系数R^2，调节每一个参数来跟踪评分结果来优化模型。
+参考地址：<a href="http://blog.csdn.net/jasonding1354/article/details/50562522">CSDN博客</a></li>
+</ul>
 
 </div>
 </div>
@@ -13872,7 +13880,7 @@ uahgxyHSHNTjExGRkKIen4iIhBT1+EREJKQo8YmISEhR4hMRkZCixCciIiFFiU9EREKKEp+IiISU
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO 4</span>
@@ -13893,9 +13901,7 @@ uahgxyHSHNTjExGRkKIen4iIhBT1+EREJKQo8YmISEhR4hMRkZCixCciIiFFiU9EREKKEp+IiISU
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]}</span>
 
     <span class="n">scoring_fnc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
-<span class="c1"># GridSearchCV(estimator, param_grid, scoring=None, fit_params=None, </span>
-<span class="c1"># n_jobs=1, iid=True, refit=True, cv=None, verbose=0, pre_dispatch=‘2*n_jobs’, </span>
-<span class="c1"># error_score=’raise’, return_train_score=’warn’)[source]</span>
+
     <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">scoring_fnc</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cross_validator</span><span class="p">)</span>
 
     <span class="c1"># 基于输入数据 [X,y]，进行网格搜索</span>
@@ -14171,7 +14177,7 @@ Predicted selling price for Client 3&#39;s home: $938,053.85
 <li>客户2：232,200.00美元</li>
 <li>客户3：938,053.85美元</li>
 </ul>
-<p>客户2的价格最低，房间数是4，社区贫困指数32%，和客户1的信息对比，房屋数量相近，但是贫困指数却相差近2倍，对应的价格相差近2倍，学生对老师比例22:1，可以看出贫困指数对于房屋价格的影响为主要因素，属于合理价格；客户3的价格最高，房间数是8，是客户1房间数的近2倍，说明面积比较大，社区贫困指数3%，说明该地区的人都偏富裕，虽然面积大，相对均价会降低，但由于富裕程度高，还是有市场需求的，学生对老师比例12:1，可以看出房屋价格主要取决于面积大和富裕程度。</p>
+<p>三位客户的房价均值是<strong>525,729.06</strong>美元，最大值<strong>938,053.85</strong>美元，最小值<strong>232,200.00</strong>美元。客户2的价格最低，房间数是4，社区贫困指数32%，和客户1的信息对比，房屋数量相近，但是贫困指数却相差近2倍，对应的价格相差近2倍，学生对老师比例22:1，可以看出贫困指数对于房屋价格的影响为主要因素，属于合理价格；客户3的价格最高，房间数是8，是客户1房间数的近2倍，说明面积比较大，社区贫困指数3%，说明该地区的人都偏富裕，虽然面积大，相对均价会降低，但由于富裕程度高，还是有市场需求的，学生对老师比例12:1，可以看出房屋价格主要取决于面积大和富裕程度。</p>
 
 </div>
 </div>
