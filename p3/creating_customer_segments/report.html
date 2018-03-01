@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 检查你的Python版本</span>
@@ -11820,7 +11820,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 引入这个项目需要的库</span>
@@ -11876,7 +11876,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 显示数据集的一个描述</span>
@@ -12019,7 +12019,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：从数据集中选择三个你希望抽样的数据点的索引</span>
@@ -12138,9 +12138,9 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <ul>
-<li>第一条记录，花费最多的是杂货类的，对比数据集的统计描述，大于均值，但和最大值还是差很多的，所以预计应该是中小型零售商</li>
-<li>第二条记录，所有项的花费都很多，对比数据集的统计描述，均大于均值，预计是大型超市</li>
-<li>第三条记录，对于牛奶、杂货和清洁纸的需求比较大，对比数据的描述，均大于平均值，其他都小于平均值，预计是咖啡馆</li>
+<li>第一条记录，花费最多的是杂货类的，对比数据集的统计描述，大于75%，但和最大值还是差很多的，所以预计应该是中小型零售商</li>
+<li>第二条记录，所有项的花费都很多，对比数据集的统计描述，均大于75%，预计是大型超市</li>
+<li>第三条记录，对于牛奶、杂货和清洁纸的需求比较大，对比数据的描述，均大于75%，其他都小于平均值，预计是咖啡馆</li>
 </ul>
 
 </div>
@@ -12167,17 +12167,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="c1"># TODO：为DataFrame创建一个副本，用&#39;drop&#39;函数丢弃一个特征</span>
-<span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Grocery&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO：使用给定的特征作为目标，将数据分割成训练集和测试集</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grocery&#39;</span><span class="p">],</span> 
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">],</span> 
                                                     <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># TODO：创建一个DecisionTreeRegressor（决策树回归器）并在训练集上训练它</span>
@@ -12204,7 +12204,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Prediction score is 0.698205852782
+<pre>Prediction score is 0.558227265767
 </pre>
 </div>
 </div>
@@ -12227,7 +12227,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong> 预测的特征是<strong>Grocery</strong>，预测的得分是0.698205852782。这个特征含义过于笼统，可以代表很多东西，不够具体，对于区分用户的消费习惯来说并不好区分，可以表示为非必要。</p>
+<p><strong>回答:</strong> 预测的特征是<strong>Detergents_Paper</strong>，预测的得分是0.558227265767。这个特征在预测得分上不高，拟合不够好，可以通过其他变量来进行预测。</p>
 
 </div>
 </div>
@@ -19121,7 +19121,7 @@ MBgMBsOmwDg/BoPBYDAYDAaDYVNgnB+DwWAwGAwGg8GwKfi/tBsM3KOlZsQAAAAASUVORK5CYII=
 <ul>
 <li>异常的数据点：[128, 154, 65, 66, 75]</li>
 </ul>
-<p>应该移除异常的数据点，异常数据会对结果的判断产生偏差。</p>
+<p>应该移除部分的异常数据点，异常数据会对结果的判断产生偏差，但不适合移除过多，由于总体的Sample只有440个，异常数据占总体的10%左右，数据过度缺失，会使训练出来的模型缺少泛化能力。</p>
 
 </div>
 </div>
@@ -21752,16 +21752,30 @@ AAAth0IIAAAAQMuhEAIAAADQciiEAAAAALQcCiEAAAAALef/B9qOMeyxXMFrAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 关于通过最初的统计值，我无法得出很明确的结论，拿Fresh举例，25%的值是3127.75，与Segment 0的8.0相差太多。</span>
+<span class="c1"># 可能是我计算获得的数据出错了，还请指出。</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong></p>
+<p><strong>回答:</strong> 
+从数据上可以看出，Segment 0有两组相同的点，具有相关性，<strong>Milk</strong>与<strong>Grocery</strong>，<strong>Fresh</strong>与<strong>Detergents_Paper</strong>；Segment 1 有1组3个相同的点，具有相关性，<strong>Milk</strong>、<strong>Grocery</strong>和<strong>Frozen</strong>.</p>
 <ul>
-<li>Cluster 0的客户最好被用Segment 0中的特征集来标识的企业类型表示，</li>
+<li>Cluster 0的客户最好被用Segment 0中的特征集来标识的企业类型表示</li>
 <li>Cluster 1的客户最好被用Segment 1中的特征集来标识的企业类型表示，</li>
-<li>Cluster 2的客户最好被用Segment 1中的特征集来标识的企业类型表示。
-主要参考前3项的标签统计值来判断。</li>
+<li>Cluster 2的客户最好被用Segment 1中的特征集来标识的企业类型表示。</li>
 </ul>
 
 </div>
@@ -21917,7 +21931,7 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答：</strong>使用cluster特征和不使用cluster获得的得分相差0.026多一点，不是特别大的区别。</p>
+<p><strong>回答：</strong>使用cluster特征和不使用cluster获得的得分相差0.026多一点，从得分上没有多大区别。对于监督学习，它是通过(feature,label)的对来学习，最后预测label；对于非监督学习，它只需同个特征本身就可以学习，最后可以预测Sample的类别，设定对应的label。在这个场景中，我们使用非监督学习的成果，即可得到的label，来增强监督学习的结果，利用这个label加入监督学习的新的特征来给监督学习增维。</p>
 
 </div>
 </div>
