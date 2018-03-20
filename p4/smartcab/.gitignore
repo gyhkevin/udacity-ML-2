@@ -1,0 +1,6 @@
+images/
+*.md
+visuals.py
+*.pyc
+smartcab/*.pyc
+.idea/
