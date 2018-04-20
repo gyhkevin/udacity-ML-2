@@ -98,7 +98,7 @@ helper.display_stats(cifar10_dataset_folder_path, batch_id, sample_id)
 # 在下面的单元中，实现 `normalize` 函数，传入图片数据 `x`，并返回标准化 Numpy 数组。值应该在 0 到 1 的范围内（含 0 和 1）。返回对象应该和 `x` 的形状一样。
 # 
 
-# In[6]:
+# In[14]:
 
 
 def normalize(x):
@@ -108,10 +108,11 @@ def normalize(x):
     : return: Numpy array of normalize data
     """
     # TODO: Implement Function
-    x = np.array(x)
-    x = x / 255.0
+#     x = np.array(x)
+#     x = x / 255.0
 #     print(x)
-    return x
+    
+    return (x-np.min(x))/(np.max(x)-np.min(x))
 
 
 """
@@ -127,10 +128,13 @@ tests.test_normalize(normalize)
 # 提示：不要重复发明轮子。
 # 
 
-# In[5]:
+# In[16]:
 
 
 from sklearn import preprocessing
+lb = preprocessing.LabelBinarizer()
+lb.fit([0,1,2,3,4,5,6,7,8,9])
+
 def one_hot_encode(x):
     """
     One hot encode a list of sample labels. Return a one-hot encoded vector for each label.
@@ -138,14 +142,7 @@ def one_hot_encode(x):
     : return: Numpy array of one-hot encoded labels
     """
     # TODO: Implement Function
-    labels = np.array(x)
-#     print(labels)
-    lb = preprocessing.LabelBinarizer()
-#     lb.fit(labels)
-    lb.fit([0,1,2,3,4,5,6,7,8,9])
-    encoded = lb.transform(labels)
-#     print(type(encoded))
-    return encoded
+    return lb.transform(np.array(x))
 
 
 """
@@ -224,7 +221,7 @@ valid_features, valid_labels = pickle.load(open('preprocess_validation.p', mode=
 # 
 # 注意：TensorFlow 中的 `None` 表示形状可以是动态大小。
 
-# In[40]:
+# In[9]:
 
 
 import tensorflow as tf
@@ -285,7 +282,7 @@ tests.test_nn_keep_prob_inputs(neural_net_keep_prob_input)
 # **注意**：对于**此层**，**请勿使用** [TensorFlow Layers](https://www.tensorflow.org/api_docs/python/tf/layers) 或 [TensorFlow Layers (contrib)](https://www.tensorflow.org/api_guides/python/contrib.layers)，但是仍然可以使用 TensorFlow 的 [Neural Network](https://www.tensorflow.org/api_docs/python/tf/nn) 包。对于所有**其他层**，你依然可以使用快捷方法。
 # 
 
-# In[54]:
+# In[10]:
 
 
 def conv2d_maxpool(x_tensor, conv_num_outputs, conv_ksize, conv_strides, pool_ksize, pool_strides):
@@ -304,9 +301,10 @@ def conv2d_maxpool(x_tensor, conv_num_outputs, conv_ksize, conv_strides, pool_ks
 #     print(conv_ksize)
     color_channels = x_tensor.get_shape().as_list()[3]
 #     print(color_channels)
-    weight = tf.Variable(tf.truncated_normal([
-        conv_ksize[0], conv_ksize[1], color_channels, conv_num_outputs
-    ]))
+    weight = tf.Variable(tf.truncated_normal(
+        [conv_ksize[0], conv_ksize[1], color_channels, conv_num_outputs],
+        stddev=0.05
+    ))
     bias = tf.Variable(tf.zeros(conv_num_outputs))
     conv_layer = tf.nn.conv2d(
         x_tensor, weight, 
@@ -386,7 +384,7 @@ tests.test_fully_conn(fully_conn)
 # 
 # **注意**：该层级不应应用 Activation、softmax 或交叉熵（cross entropy）。
 
-# In[61]:
+# In[12]:
 
 
 def output(x_tensor, num_outputs):
@@ -398,7 +396,7 @@ def output(x_tensor, num_outputs):
     """
     # TODO: Implement Function
     shape_list = x_tensor.get_shape().as_list()
-    weight = tf.Variable(tf.truncated_normal([shape_list[1], num_outputs]))
+    weight = tf.Variable(tf.truncated_normal([shape_list[1], num_outputs],stddev=0.05))
     bias = tf.Variable(tf.zeros(num_outputs))
     out = tf.add(tf.matmul(x_tensor, weight), bias)
     return out
@@ -437,14 +435,14 @@ def conv_net(x, keep_prob):
     #    conv2d_maxpool(x_tensor, conv_num_outputs, conv_ksize, conv_strides, pool_ksize, pool_strides)
     conv1 = conv2d_maxpool(x, 
                            conv_num_outputs=64, 
-                           conv_ksize=[5,5], 
+                           conv_ksize=[3,3], 
                            conv_strides=[1,1], 
                            pool_ksize=[3,3], 
                            pool_strides=[2,2])
     
     conv2 = conv2d_maxpool(conv1,
                            conv_num_outputs=64, 
-                           conv_ksize=[5,5], 
+                           conv_ksize=[3,3], 
                            conv_strides=[1,1], 
                            pool_ksize=[3,3], 
                            pool_strides=[2,2])
