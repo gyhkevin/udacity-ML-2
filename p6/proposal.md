@@ -19,14 +19,14 @@
 ### 解决办法
 ​	项目使用开源机器学习库Keras作为主要开发框架，以最流行的TensorFlow作为Keras的后端程序，实现卷积神经网络。在构建卷积神经网络时，启用 GPU 支持可以大大的提升计算效率，所以还需安装CUDA。使用AWS p2.xlarge（或p3.2xlarge）上的针对深度学习的服务器实例，可以降低成本，节约时间，提高开发效率。
 
-​	对数据进行预处理，并从数据集中提取特征。区分训练集和验证集，然后进行模型训练，根据结果进行再优化，调整参数，直到取得满意的结果。根据项目要求，必须达到 Kaggle Public Leaderboard 前10%，即小于0.04141。
+​	对数据进行预处理，并从数据集中提取特征。区分训练集和验证集，然后进行模型训练，根据结果进行再优化，调整参数，直到取得满意的结果。
 
 ### 基准模型
-​	在使用Keras深度学习库的官网上看到，已经有人给我们提供了一些可使用的模型，并且标注了模型的准确率，利用现有的模型以及预训练出的权重，就能很好的表示猫和狗的特征。综合考虑，基准模型选择的是InceptionV3、ResNet50和Xception这个三个模型组合。结构图如下：
+​	在使用Keras深度学习库的官网上看到，已经有人给我们提供了一些可使用的模型，并且标注了模型的准确率，利用现有的模型以及预训练出的权重，就能很好的表示猫和狗的特征。综合考虑，基准模型选择的是ResNet50[1]、InceptionV3[2]、和Xception[3]这个三个模型组合。结构图如下：
 
 ![image-20180430132933323](/Users/kevin/Code/python/project/udacity-ML-2/p6/image-20180430132933323.png)
 
-
+​	根据项目要求，必须达到 Kaggle Public Leaderboard 前10%，获得的基准分数应小于0.04141。
 
 ### 评估指标
 
@@ -49,40 +49,9 @@
 
 参考引用：
 
-[1]  Y.Bengio,P.Simard,andP.Frasconi.Learninglong-termdependen-cies with gradient descent is difficult. IEEE Transactions on NeuralNetworks, 5(2):157–166, 1994.
+[1]. [ResNet](https://arxiv.org/abs/1512.03385) 15.12
 
-[2]  C. M. Bishop. Neural networks for pattern recognition. Oxforduniversity press, 1995.
+[2]. [Inception v3](https://arxiv.org/abs/1512.00567) 15.12
 
-[3]  W. L. Briggs, S. F. McCormick, et al. A Multigrid Tutorial. Siam,2000.
+[3]. [Xception](https://arxiv.org/abs/1610.02357) 16.10
 
-[4]  K.Chatfield,V.Lempitsky,A.Vedaldi,andA.Zisserman.Thedevilis in the details: an evaluation of recent feature encoding methods.In BMVC, 2011.
-
-[5]  M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zis-serman. The Pascal Visual Object Classes (VOC) Challenge. IJCV,pages 303–338, 2010.
-
-[6]  S.GidarisandN.Komodakis.Objectdetectionviaamulti-region&semantic segmentation-aware cnn model. In ICCV, 2015.
-
-[7]  R. Girshick. Fast R-CNN. In ICCV, 2015.
-
-[8]  R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hier-archies for accurate object detection and semantic segmentation. In CVPR, 2014.
-
-[9]  X. Glorot and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS, 2010.
-
-[10]  I. J. Goodfellow, D. Warde-Farley, M. Mirza, A. Courville, and Y. Bengio. Maxout networks. arXiv:1302.4389, 2013.
-
-[11] C.-Y.Lee,S.Xie,P.Gallagher,Z.Zhang,andZ.Tu.Deeply-supervised nets. arXiv preprint arXiv:1409.5185, 2014.[12] J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks for semantic segmentation. In Proceedings of theIEEE Conference on Computer Vision and Pattern Recogni-tion, pages 3431–3440, 2015.
-
-[13] Y. Movshovitz-Attias, Q. Yu, M. C. Stumpe, V. Shet,S. Arnoud, and L. Yatziv. Ontological supervision for finegrained classification of street view storefronts. In Proceed-ings of the IEEE Conference on Computer Vision and PatternRecognition, pages 1693–1702, 2015.
-
-[14] R. Pascanu, T. Mikolov, and Y. Bengio. On the diffi-culty of training recurrent neural networks. arXiv preprintarXiv:1211.5063, 2012.
-
-[15] D. C. Psichogios and L. H. Ungar. Svd-net: an algorithmthat automatically selects network structure. IEEE transac-tions on neural networks/a publication of the IEEE NeuralNetworks Council, 5(3):513–515, 1993.
-
-[16]  L. Sifre and S. Mallat. Rotation, scaling and deformationinvariant scattering for texture discrimination. In 2013 IEEEConference on Computer Vision and Pattern Recognition,Portland, OR, USA, June 23-28, 2013, pages 1233–1240,2013.
-
-[17]  N. Silberman and S. Guadarrama. Tf-slim, 2016.
-
-[18]  K. Simonyan and A. Zisserman. Very deep convolutionalnetworks for large-scale image recognition. arXiv preprint arXiv:1409.1556, 2014.
-
-[19]  C. Szegedy, S. Ioffe, and V. Vanhoucke. Inception-v4, inception-resnet and the impact of residual connections on learning. arXiv preprint arXiv:1602.07261, 2016.
-
-[20]  C.Szegedy,W.Liu,Y.Jia,P.Sermanet,S.Reed,D.Anguelov,D. Erhan, V. Vanhoucke, and A. Rabinovich. Going deeper with convolutions. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 1–9, 2015.
