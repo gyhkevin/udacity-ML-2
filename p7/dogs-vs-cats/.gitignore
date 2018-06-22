@@ -9,3 +9,4 @@ train*
 merged_pred*
 resnet50_pred.csv
 *.docx
+feature_train.ipynb
