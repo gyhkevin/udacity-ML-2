@@ -104,16 +104,25 @@
 
 ## III. 方法
 ### 数据预处理
-​	基于现有的模型进行迁移计算，输入的数据需要与模型相匹配，ResNet50、InceptionV3和Xception这三种模型对应输入的数据是不同的。
+​	基于现有的模型进行迁移计算，输入的数据需要与模型相匹配，ResNet50、InceptionV3和Xception这三种模型对应输入的数据是不同的，需要满足各个模型的默认输入要求。图像数据的表现形式在计算机中表现为：(weight, height, channel), 每个元素的取值范围在0～255之间。预训练模型先进行归一化处理，处理完成后作为输入数据，传递给模型；添加全局平均池化层GlobalAveragePooling2D，作为模型最后的输出数据。ImageDataGenerator作为keras提供的图像预处理函数，可以将传递过来的图像数据根据指定的大小，传递给模型需要的输入数据。
+
+​	查阅Keras API，Application模块为部分模型提供预处理好的输入值，如InceptionV3和Xception。在训练模型时，直接使用preprocess_input作为输入参数。
 
 ### 执行过程
+
+​	根据预先构想好的迁移模型方案，分别训练并导出模型ResNet50、InceptionV3和Xception三个处理好的模型然后开始聚合模型。
+
+
+
 Dropout(0.5)->acc=0.9650
 
 Dropout(0.25)->acc=0.9816
 
-![image-20180517170440663](/Users/kevin/Code/python/project/udacity-ML-2/p7/dogs-vs-cats/image-20180517170440663.png)
+![image-20180621103335323](/Users/kevin/Code/python/project/udacity-ML-2/p7/dogs-vs-cats/image-20180621103335323.png)
 
-![image-20180517173346115](/Users/kevin/Code/python/project/udacity-ML-2/p7/dogs-vs-cats/image-20180517173346115.png)
+![image-20180621111351322](/Users/kevin/Code/python/project/udacity-ML-2/p7/dogs-vs-cats/image-20180621111351322.png)
+
+
 
 ### 完善
 ​	在考虑权重更新的时候，检查权重点ModelCheckpoint函数可以帮助在每次的epoch中，保存获得分数最好的权重，然后通过获得最优权重来训练模型，最后获得了0.03843的成绩。
@@ -137,6 +146,10 @@ _（大概 2-3 页）_
 - _最终结果对比你的基准模型表现得更好还是有所逊色？_
 - _你是否详尽地分析和讨论了最终结果？_
 - _最终结果是不是确确实实解决了问题？_
+
+
+
+![image-20180621180720026](/Users/kevin/Code/python/project/udacity-ML-2/p7/dogs-vs-cats/image-20180621180720026.png)
 
 
 ## V. 项目结论
