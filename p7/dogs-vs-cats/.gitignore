@@ -3,3 +3,9 @@ train*
 .idea/
 .ipynb_checkpoints/
 *.h5
+20160404000039222
+*.jpg
+*.png
+merged_pred*
+resnet50_pred.csv
+*.docx
